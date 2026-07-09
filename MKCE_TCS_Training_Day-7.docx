@@ -1,0 +1,247 @@
+1.Reverse Array Without Using Another Array  
+
+import java.util.*;
+public class ReverseArray {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int arr[] = new int[n];
+        for(int i=0;i<n;i++)
+            arr[i]=sc.nextInt();
+        int i=0,j=n-1;
+        while(i<j){
+            int temp=arr[i];
+            arr[i]=arr[j];
+            arr[j]=temp;
+            i++;
+            j--;
+        }
+        for(i=0;i<n;i++)
+            System.out.print(arr[i]+" ");
+    }
+}
+
+2. Find Maximum Difference Between Two Elements
+
+import java.util.*;
+public class MaxDifference {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        int arr[]=new int[n];
+        for(int i=0;i<n;i++)
+            arr[i]=sc.nextInt();
+        int min=arr[0];
+        int maxDiff=arr[1]-arr[0];
+        for(int i=1;i<n;i++){
+            if(arr[i]-min>maxDiff)
+                maxDiff=arr[i]-min;
+            if(arr[i]<min)
+                min=arr[i];
+        }
+        System.out.println("Maximum Difference = "+maxDiff);
+    }
+}
+
+3. Leaders in an Array
+
+import java.util.*;
+public class Leaders {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        int arr[]=new int[n];
+        for(int i=0;i<n;i++)
+            arr[i]=sc.nextInt();
+        int leader=arr[n-1];
+        System.out.print(leader+" ");
+        for(int i=n-2;i>=0;i--){
+            if(arr[i]>leader){
+                leader=arr[i];
+                System.out.print(leader+" ");
+            }
+        }
+    }
+}
+
+4. Find Equilibrium Index
+
+import java.util.*;
+public class Equilibrium {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        int arr[]=new int[n];
+        int total=0;;
+        for(int i=0;i<n;i++){
+            arr[i]=sc.nextInt();
+            total+=arr[i];
+        }
+        int left=0;
+        for(int i=0;i<n;i++){
+            total-=arr[i];
+            if(left==total){
+                System.out.println("Equilibrium Index = "+i);
+                return;
+            }
+            left+=arr[i];
+        }
+        System.out.println("No Equilibrium Index");
+    }
+}
+
+5. Find Pair with Given Sum
+
+import java.util.*;
+public class PairSum {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        int arr[]=new int[n];
+        for(int i=0;i<n;i++)
+            arr[i]=sc.nextInt();
+        int target=sc.nextInt();
+        boolean found=false;
+        for(int i=0;i<n;i++){
+            for(int j=i+1;j<n;j++){
+                if(arr[i]+arr[j]==target){
+                    System.out.println("Pair = "+arr[i]+" "+arr[j]);
+                    found=true;
+                    break;
+                }
+            }
+            if(found)
+                break;
+        }
+        if(!found)
+            System.out.println("Pair Not Found");
+    }
+}
+
+6. Find Majority Element
+
+import java.util.*;
+public class MajorityElement {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        int arr[]=new int[n];
+        for(int i=0;i<n;i++)
+            arr[i]=sc.nextInt();
+        for(int i=0;i<n;i++){
+            int count=0;
+            for(int j=0;j<n;j++){
+                if(arr[i]==arr[j])
+                    count++;
+            }
+            if(count>n/2){
+                System.out.println("Majority Element = "+arr[i]);
+                return;
+            }
+        }
+        System.out.println("No Majority Element");
+    }
+}
+
+7. Rearrange Array in Wave Form
+
+import java.util.*;
+public class WaveArray {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        int arr[]=new int[n];
+        for(int i=0;i<n;i++)
+            arr[i]=sc.nextInt();
+        for(int i=0;i<n-1;i+=2){
+            int temp=arr[i];
+            arr[i]=arr[i+1];
+            arr[i+1]=temp;
+        }
+        for(int i=0;i<n;i++)
+            System.out.print(arr[i]+" ");
+    }
+}
+
+8. Find Longest Consecutive Increasing Sequence
+
+import java.util.*;
+public class LongestIncreasing {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+
+        int n=sc.nextInt();
+        int arr[]=new int[n];
+        for(int i=0;i<n;i++)
+            arr[i]=sc.nextInt();
+        int max=1;
+        int count=1;
+        for(int i=1;i<n;i++){
+            if(arr[i]==arr[i-1]+1){
+                count++;
+            }
+            else{
+                if(count>max)
+                    max=count;
+                count=1;
+            }
+        }
+        if(count>max)
+            max=count;
+        System.out.println("Length = "+max);
+    }
+}
+
+9. Find Frequency of Every Element Without Using HashMap
+
+import java.util.*;
+public class Frequency {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        int arr[]=new int[n];
+        boolean visited[]=new boolean[n];
+        for(int i=0;i<n;i++)
+            arr[i]=sc.nextInt();
+        for(int i=0;i<n;i++){
+            if(visited[i])
+                continue;
+            int count=1;
+            for(int j=i+1;j<n;j++){
+                if(arr[i]==arr[j]){
+                    count++;
+                    visited[j]=true;
+                }
+            }
+            System.out.println(arr[i]+" -> "+count);
+        }
+    }
+}
+
+10. Find the Smallest Positive Missing Number
+
+import java.util.*;
+public class SmallestPositiveMissing {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        int arr[]=new int[n];
+        for(int i=0;i<n;i++)
+            arr[i]=sc.nextInt();
+        int ans=1;
+        while(true){
+            boolean found=false;
+            for(int i=0;i<n;i++){
+                if(arr[i]==ans){
+                    found=true;
+                    break;
+                }
+            }
+            if(!found){
+                System.out.println(ans);
+                break;
+            }
+            ans++;
+        }
+    }
+}

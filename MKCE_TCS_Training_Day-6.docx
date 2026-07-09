@@ -1,0 +1,233 @@
+1)Second largest element without sorting :
+
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] arr = new int[n];
+        for (int i = 0; i < n; i++) {
+            arr[i] = sc.nextInt();
+        }
+        int largest = Integer.MIN_VALUE;
+        int secondLargest = Integer.MIN_VALUE;
+        for (int i = 0; i < n; i++) {
+            if (arr[i] > largest) {
+                secondLargest = largest;
+                largest = arr[i];
+            } else if (arr[i] > secondLargest && arr[i] != largest) {
+                secondLargest = arr[i];
+            }
+        }
+        System.out.println("Second Largest = " + secondLargest);
+    }
+}
+
+2)Second smallest element without sorting :
+
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] arr = new int[n];
+        for (int i = 0; i < n; i++) {
+            arr[i] = sc.nextInt();
+        }
+        int largest = Integer.MAX_VALUE;
+        int secondLargest = Integer.MAX_VALUE;
+        for (int i = 0; i < n; i++) {
+            if (arr[i] < largest) {
+                secondLargest = largest;
+                largest = arr[i];
+            } else if (arr[i] < secondLargest && arr[i] != largest) {
+                secondLargest = arr[i];
+            }
+        }
+
+        System.out.println("Second Largest = " + secondLargest);
+    }
+}
+
+3)Move All Zeros to the End :
+
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] arr = new int[n];
+        for (int i = 0; i < n; i++) {
+            arr[i] = sc.nextInt();
+        }
+        for (int i = 0; i < n; i++) {
+            if (arr[i] != 0) {
+                System.out.print(arr[i]);
+            }
+        }
+        for(int i=0;i<n;i++){
+            if(arr[i]==0){
+                System.out.print(arr[i]);
+            }
+        }
+    }
+}
+
+4)Rotate Array to the Left by One Position :
+
+import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sp = new Scanner(System.in);
+        int n = sp.nextInt();
+        int arr[] = new int[n];
+        for (int i = 0; i < n; i++) {
+            arr[i] = sp.nextInt();
+        }
+        int temp = arr[0];
+        for(int i = 0; i < n-1; i++){
+            arr[i] = arr[i+1];
+        }
+            arr[n-1] = temp;
+            for(int i = 0; i < n; i++){
+                System.out.println(arr[i]);
+    }
+}
+}
+
+5)Rotate Array to the Right by One Position :
+
+import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sp = new Scanner(System.in);
+        int n = sp.nextInt();
+        int arr[] = new int[n];
+        for (int i = 0; i < n; i++) {
+            arr[i] = sp.nextInt();
+        }
+        int temp = arr[n-1];
+        for(int i = n-1; i > 0; i++){
+            arr[i] = arr[i-1];
+        }
+            arr[0] = temp;
+            for(int i = 0; i < n; i++){
+                System.out.println(arr[i]);
+    }
+}
+}
+
+6. Find Missing Number (1 to N)
+
+import java.util.*;
+public class MissingNumber {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt(); 
+        int sum = 0;
+        for (int i = 0; i < n - 1; i++) {
+            sum += sc.nextInt();
+        }
+        int total = n * (n + 1) / 2;
+        System.out.println("Missing Number = " + (total - sum));
+    }
+}
+
+7. Find the Element that Appears Only Once
+
+import java.util.*;
+public class UniqueElement {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int xor = 0;
+        for (int i = 0; i < n; i++) {
+            xor ^= sc.nextInt();
+        }
+        System.out.println("Unique Element = " + xor);
+    }
+}
+
+8. Find the First Repeating Element
+
+import java.util.*;
+public class FirstRepeating {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int arr[] = new int[n]
+        for (int i = 0; i < n; i++) {
+            arr[i] = sc.nextInt();
+        }
+        boolean found = false;
+        for (int i = 0; i < n; i++) {
+            for (int j = i + 1; j < n; j++) {
+                if (arr[i] == arr[j]) {
+                    System.out.println("First Repeating Element = " + arr[i]);
+                    found = true;
+                    break;
+                }
+            }
+            if (found)
+                break;
+        }
+        if (!found)
+            System.out.println("No Repeating Element");
+    }
+}
+
+9. Find the First Non-Repeating Element
+
+import java.util.*;
+public class FirstNonRepeating {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int arr[] = new int[n];
+        for (int i = 0; i < n; i++) {
+            arr[i] = sc.nextInt();
+        }
+        boolean found = false;
+        for (int i = 0; i < n; i++) {
+            int count = 0;
+            for (int j = 0; j < n; j++) {
+                if (arr[i] == arr[j]) {
+                    count++;
+                }
+            }
+            if (count == 1) {
+                System.out.println("First Non-Repeating Element = " + arr[i]);
+                found = true;
+                break;
+            }
+        }
+
+        if (!found)
+            System.out.println("No Non-Repeating Element");
+    }
+}
+
+10. Check if Array is Sorted
+
+import java.util.*;
+public class CheckSorted {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int arr[] = new int[n];
+        for (int i = 0; i < n; i++) {
+            arr[i] = sc.nextInt();
+        }
+        boolean sorted = true;
+        for (int i = 0; i < n - 1; i++) {
+            if (arr[i] > arr[i + 1]) {
+                sorted = false;
+                break;
+            }
+        }
+        if (sorted)
+            System.out.println("Array is Sorted");
+        else
+            System.out.println("Array is Not Sorted");
+    }
+}
